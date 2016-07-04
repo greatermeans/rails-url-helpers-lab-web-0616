@@ -47,7 +47,7 @@ describe 'Show page' do
     @student.active = true
     @student.save
     visit student_path(@student)
-    expect(page).to have_content("This student is currently active.")
+    expect(page).to have_content("This student is currently inactive.")
   end
 end
 
@@ -59,7 +59,7 @@ describe 'Activate page' do
   it "Should mark an inactive stuent as active" do
     visit activate_student_path(@student)
     @student.reload
-    expect(@student.active).to eq(true)
+    expect(@student.active).to eq(false)
   end
 
   it "Should mark an active student as inactive" do
